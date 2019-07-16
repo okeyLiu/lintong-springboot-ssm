@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books")
-@CrossOrigin//开启跨域穿透，即其他服务器可以直接访问
+@CrossOrigin//开启跨域穿透，即其他服务器可以直接访问  不用考虑跨域！！！
 public class BookController {
 
     @Autowired
