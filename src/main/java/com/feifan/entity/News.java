@@ -11,6 +11,9 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+/*
+Lombok还可以，注释写起来也累
+ */
 public class News {
     private Integer newsId;
     private Integer typeId;
