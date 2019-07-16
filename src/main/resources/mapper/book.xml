@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.feifan.dao.BookDAO">
+
+    <resultMap id="bookResultMap" type="Book">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <!-- 为这个字段指定类型处理方式，按照自定义的类型处理器 -->
+        <result column="authors" property="authors" typeHandler="com.feifan.handler.BookTypeHandler"/>
+        <result column="price" property="price"/>
+        <result column="publisher" property="publisher"/>
+        <result column="detail" property="detail"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="bookResultMap">
+      select id,name,authors,price,publisher,detail from tb_books
+    </select>
+
+</mapper>
