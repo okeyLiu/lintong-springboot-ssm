@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 Lombok还可以，注释写起来也累
  */
 public class News {
-    private Integer newsId;
-    private Integer typeId;
+    private Integer newsId;//id
+    private Integer typeId;//type
     private String title;
     private LocalDateTime pubDate;
     private String author;
