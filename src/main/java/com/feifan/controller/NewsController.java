@@ -34,7 +34,9 @@ public class NewsController {
     }
 
     @GetMapping("/getMdContent")
-    public String getMdContent(){
+    public String getMdContent(String name,Integer age){
+        System.out.println(name);
+        System.out.println(age);
         return "<h1 id=\"h1--del-del-\"><a name=\"你在<del>干什么</del>？\" class=\"reference-link\"></a><span class=\"header-link octicon octicon-link\"></span>你在<del>干什么</del>？</h1><p>你发反了你</p>\n" +
                 "<p>nfldffnldnlsn<br>建档立卡发你代理商<br>可能都<strong><em>流口水</em></strong>拿过来 </p>";
     }
