@@ -3,12 +3,10 @@ package com.feifan.controller;
 import com.feifan.common.Result;
 import com.feifan.entity.User;
 import com.feifan.security.JwtUtil;
-import lombok.Getter;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -22,7 +20,7 @@ public class UserController {
      * ?username=admin&password=1234
      */
     @PostMapping("/login")
-    public Result login(@RequestBody User user) throws ServletException {
+    public Result login(User user) throws ServletException {
         if (!"admin".equals(user.getUsername())) {
             throw new ServletException("no such user");
         }
