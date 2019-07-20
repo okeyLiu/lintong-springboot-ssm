@@ -15,11 +15,11 @@ public class Result {
     private Object data;
 
     public Result() {
-        this(true, "", null);
+        this(true, "success", null);
     }
 
     public Result(Object data) {
-        this(true, "", data);
+        this(true, "success", data);
     }
 
     public Result(boolean ok, String msg) {

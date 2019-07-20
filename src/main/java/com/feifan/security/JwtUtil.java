@@ -71,24 +71,4 @@ public class JwtUtil {
         Claims body = Jwts.parser().setSigningKey(base64EncodedSecretKey).parseClaimsJws(token).getBody().setExpiration(new Date());
     }
 
-    /**
-     * 拆出key
-     * @param sub
-     * @param key
-     * @return
-     */
-    public static String getTokenByKey(String sub,String key){
-        return key.substring(sub.length());
-    }
-
-    /**
-     * 生成key
-     * @param sub
-     * @param key
-     * @return
-     */
-    public static String generateTokenByKey(String sub,String key){
-        return sub+key;
-    }
-
 }

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
-@CrossOrigin//避免跨域问题
 @RestController
 @RequestMapping("/news")
 public class NewsController {

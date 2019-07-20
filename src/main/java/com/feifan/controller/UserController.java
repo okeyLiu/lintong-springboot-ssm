@@ -16,9 +16,9 @@ public class UserController {
      * <p>
      * 加@RequestBody
      * data: JSON.stringify({
-     *          "username": "admin",
-     *          "password": "1234"
-     *      }),
+     * "username": "admin",
+     * "password": "1234"
+     * }),
      * 不加@RequestBody
      * ?username=admin&password=1234
      */
@@ -32,7 +32,7 @@ public class UserController {
         }
         String token = JwtUtil.getToken(user.getUsername());
         System.out.println(token);
-        return new Result(token);
+        return new Result(true, "登录成功", token);
     }
 
     /**
