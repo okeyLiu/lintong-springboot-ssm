@@ -6,6 +6,9 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+/*
+AOP好简单，你们都不会，我能怎么办！
+ */
 @Aspect//定义一个切面
 @Component//被Spring管理
 public class TimeAspect {

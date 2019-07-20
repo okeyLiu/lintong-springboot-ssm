@@ -14,9 +14,9 @@ import java.util.List;
 @EqualsAndHashCode//equals 和 hashcode方法
 public class Book implements Serializable {
 
-    private Integer id;
-    private String name;
-    private List<String> authors;
+    private Integer id;//id
+    private String name;//name
+    private List<String> authors;//authors
     private Double price;
     private String detail;
     private String publisher;

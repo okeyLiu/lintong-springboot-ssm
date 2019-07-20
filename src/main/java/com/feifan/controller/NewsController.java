@@ -27,6 +27,11 @@ public class NewsController {
         return news;
     }
 
+    /**
+     * 接收发布的新闻，提交什么新闻，回复什么新闻，并且在控制台打印
+     * @param text
+     * @return
+     */
     @PostMapping("/addNews")
     public String save(String text){
         System.out.println(text);
