@@ -15,12 +15,15 @@ public class UserController {
      * @func 测试时先用死的用户名密码，请求使用JSON格式数据
      * <p>
      * 加@RequestBody
-     * {"username":"admin","password":"1234"}
+     * data: JSON.stringify({
+     *          "username": "admin",
+     *          "password": "1234"
+     *      }),
      * 不加@RequestBody
      * ?username=admin&password=1234
      */
     @PostMapping("/login")
-    public Result login(User user) throws ServletException {
+    public Result login(@RequestBody User user) throws ServletException {
         if (!"admin".equals(user.getUsername())) {
             throw new ServletException("no such user");
         }
@@ -42,11 +45,12 @@ public class UserController {
 
     /**
      * 返回当前的token中的用户名
+     *
      * @param token
      * @return
      */
     @GetMapping("/current")
-    public Result getUser(String token){
+    public Result getUser(String token) {
         return new Result(JwtUtil.getUsername(token));
     }
 
