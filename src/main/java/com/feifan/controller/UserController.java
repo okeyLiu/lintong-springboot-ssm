@@ -1,31 +1,55 @@
 package com.feifan.controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.feifan.common.Result;
+import com.feifan.entity.User;
+import com.feifan.security.JwtUtil;
+import lombok.Getter;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletException;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-    @RequestMapping("/login/{username}")
-    public String login(@PathVariable String username, HttpSession session){
-        if(username != null){
-            session.setAttribute("username",username);
-            System.out.println("UserController.login-"+session.getId());
-            return "ok";
+    /**
+     * @func 测试时先用死的用户名密码，请求使用JSON格式数据
+     * <p>
+     * 加@RequestBody
+     * {"username":"admin","password":"1234"}
+     * 不加@RequestBody
+     * ?username=admin&password=1234
+     */
+    @PostMapping("/login")
+    public Result login(@RequestBody User user) throws ServletException {
+        if (!"admin".equals(user.getUsername())) {
+            throw new ServletException("no such user");
         }
-        return "username error";
+        if (!"1234".equals(user.getPassword())) {
+            throw new ServletException("wrong password");
+        }
+        String token = JwtUtil.getToken(user.getUsername());
+        System.out.println(token);
+        return new Result(token);
     }
 
-    @RequestMapping("/query")
-    public String query(HttpSession session){
-        System.out.println("UserController.query-"+session.getId());
-        Object username = session.getAttribute("username");
-        System.out.println("session saved-->"+username);
-        return username.toString();
+    /**
+     * @func 用于客户端检查token是否合法
+     */
+    @PostMapping("/checkToken")
+    public Result checkToken(String token) {
+        return new Result(JwtUtil.isTokenOk(token));
+    }
+
+    /**
+     * 返回当前的token中的用户名
+     * @param token
+     * @return
+     */
+    @GetMapping("/current")
+    public Result getUser(String token){
+        return new Result(JwtUtil.getUsername(token));
     }
 
 }

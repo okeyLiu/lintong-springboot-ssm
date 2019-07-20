@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+
+<button onclick="login()">测试login</button>
+<button onclick="query()">测试query</button>
+<script>
+    function login() {
+        $.get("http://localhost:9091/user/login/okeyLiu",function (data) {
+            alert("login->"+data)
+        })
+    }
+    function query() {
+        $.get("http://localhost:9091/user/query",function (data) {
+            alert("login->"+data)
+        })
+    }
+</script>
+
+
+</body>
+</html>
